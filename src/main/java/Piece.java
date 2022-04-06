@@ -116,6 +116,11 @@ public class Piece {
 								  {1, 1, 1}};
 	}
 	
+	public String getName() {
+		
+		return name;
+	}
+	
 	public Player getPlayer() {
 		
 		return player;

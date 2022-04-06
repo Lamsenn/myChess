@@ -1,12 +1,14 @@
 public class Player {
     
-    private String name;
+    private String  name;
+    private int     score;
     private Piece[] takenPieces = new Piece[15];
     static Player[] players = new Player[2];
 
     public Player(String name) {
 
         this.name = name;
+        this.score = 0;
         if (players[0] == null) players[0] = this;
         else                    players[1] = this;
     }
@@ -16,6 +18,7 @@ public class Player {
         int i = 0;
         while (takenPieces[i] != null) i++;
         takenPieces[i] = piece;
+        score += piece.getPoint();
     }
     
     public Piece getTakenPieces(int i) {
@@ -25,11 +28,6 @@ public class Player {
     
     public int getScore() {
         
-        int score = 0;
-        for (Piece piece: takenPieces) {
-        
-            score += piece.getPoint();
-        }
         return score;
     }
 }

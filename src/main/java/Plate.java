@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Plate {
 
     private Piece	p00, p01, p02, p03, p04, p05, p06, p07, r00, r01, n00, n01, b00, b01, q00, k00;
@@ -48,6 +50,16 @@ public class Plate {
                               {null,null,null,null,null,null,null,null},
                               { p00, p01, p02, p03, p04, p05, p06, p07},
                               { r00, n00, b00, q00, k00, b01, n01, r01}};
+    }
+    
+    public ArrayList<int[]> possibleMoves(Piece piece) {            //left here: continuer cette méthode, et créer l'attribut point dans Piece
+    
+        ArrayList<int[]> moves = new ArrayList<>();
+        int x, y;
+        
+        
+        
+        return moves;
     }
     
     public Piece[][] copy() {

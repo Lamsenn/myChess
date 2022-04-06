@@ -10,6 +10,5 @@ public class App {
         Player	player0 = new Player("Lamsen"),
                 player1 = new Player("Magnus");
         Plate plate = new Plate(player0, player1);
-        Plate.plate
     }
 }

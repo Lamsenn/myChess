@@ -1,46 +1,47 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Plate {
 
-    private Piece	p00, p01, p02, p03, p04, p05, p06, p07, r00, r01, n00, n01, b00, b01, q00, k00;
-    private Piece	p10, p11, p12, p13, p14, p15, p16, p17, r10, r11, n10, n11, b10, b11, q10, k10;
+    public static Piece	p00, p01, p02, p03, p04, p05, p06, p07, r00, r01, n00, n01, b00, b01, q00, k00;
+    public static Piece	p10, p11, p12, p13, p14, p15, p16, p17, r10, r11, n10, n11, b10, b11, q10, k10;
     public static Piece[][] plate;
 
     public Plate(Player player0, Player player1) {
     
-        p00 = new Piece(player0, "Pawn");
-        p01 = new Piece(player0, "Pawn");
-        p02 = new Piece(player0, "Pawn");
-        p03 = new Piece(player0, "Pawn");
-        p04 = new Piece(player0, "Pawn");
-        p05 = new Piece(player0, "Pawn");
-        p06 = new Piece(player0, "Pawn");
-        p07 = new Piece(player0, "Pawn");
-        r00 = new Piece(player0, "Rook");
-        r01 = new Piece(player0, "Rook");
-        n00 = new Piece(player0, "Knight");
-        n01 = new Piece(player0, "Knight");
-        b00 = new Piece(player0, "Bishop");
-        b01 = new Piece(player0, "Bishop");
-        q00 = new Piece(player0, "Queen");
-        k00 = new Piece(player0, "King");
-    
-        p10 = new Piece(player1, "Pawn");
-        p11 = new Piece(player1, "Pawn");
-        p12 = new Piece(player1, "Pawn");
-        p13 = new Piece(player1, "Pawn");
-        p14 = new Piece(player1, "Pawn");
-        p15 = new Piece(player1, "Pawn");
-        p16 = new Piece(player1, "Pawn");
-        p17 = new Piece(player1, "Pawn");
-        r10 = new Piece(player1, "Rook");
-        r11 = new Piece(player1, "Rook");
-        n10 = new Piece(player1, "Knight");
-        n11 = new Piece(player1, "Knight");
-        b10 = new Piece(player1, "Bishop");
-        b11 = new Piece(player1, "Bishop");
-        q10 = new Piece(player1, "Queen");
-        k10 = new Piece(player1, "King");
+        p00 = new Pawn(player0);
+        p01 = new Pawn(player0);
+        p02 = new Pawn(player0);
+        p03 = new Pawn(player0);
+        p04 = new Pawn(player0);
+        p05 = new Pawn(player0);
+        p06 = new Pawn(player0);
+        p07 = new Pawn(player0);
+        r00 = new Rook(player0);
+        r01 = new Rook(player0);
+        n00 = new Knight(player0);
+        n01 = new Knight(player0);
+        b00 = new Bishop(player0);
+        b01 = new Bishop(player0);
+        q00 = new Queen(player0);
+        k00 = new King(player0);
+
+        p10 = new Pawn(player1);
+        p11 = new Pawn(player1);
+        p12 = new Pawn(player1);
+        p13 = new Pawn(player1);
+        p14 = new Pawn(player1);
+        p15 = new Pawn(player1);
+        p16 = new Pawn(player1);
+        p17 = new Pawn(player1);
+        r10 = new Rook(player1);
+        r11 = new Rook(player1);
+        n10 = new Knight(player1);
+        n11 = new Knight(player1);
+        b10 = new Bishop(player1);
+        b11 = new Bishop(player1);
+        q10 = new Queen(player1);
+        k10 = new King(player1);
     
         plate = new Piece[][]{{ r10, n10, b10, q10, k10, b11, n11, r11},
                               { p10, p11, p12, p13, p14, p15, p16, p17},
@@ -52,7 +53,7 @@ public class Plate {
                               { r00, n00, b00, q00, k00, b01, n01, r01}};
     }
     
-    public ArrayList<int[]> possibleMoves(Piece piece) {            //left here: continuer cette méthode, et créer l'attribut point dans Piece
+    public static ArrayList<int[]> moves(Piece piece) {             //to do
     
         ArrayList<int[]> moves = new ArrayList<>();
         int x, y;
@@ -61,17 +62,26 @@ public class Plate {
         
         return moves;
     }
+
+    public int[] find(Piece piece) {
+
+        for (int x = 0; x < plate.length; x++) {
+
+            for (int y = 0; y < plate.length; y++) {
+
+                if (plate[x][y] == piece) return new int[]{x,y};
+            }
+        }
+        return null;
+    }
     
     public Piece[][] copy() {
     
         Piece[][] plateCopy = new Piece[8][8];
 
-        for (int i = 0; i < 8; i++) {
-            
-            for (int j = 0; j < 8; j++) {
-    
-                plateCopy[i][j] = plate[i][j];
-            }
+        for (int x = 0; x < 8; x++) {
+
+            System.arraycopy(plate[x], 0, plateCopy[x], 0, 8);
         }
         return plateCopy;
     }

@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public class Player {
     
     private String  name;
     private int     score;
-    private Piece[] takenPieces = new Piece[15];
+    private ArrayList<Piece> pieces      = new ArrayList<>();
+    private ArrayList<Piece> takenPieces = new ArrayList<>();
     static Player[] players = new Player[2];
 
     public Player(String name) {
@@ -14,20 +17,33 @@ public class Player {
     }
     
     public void take(Piece piece) {
-        
-        int i = 0;
-        while (takenPieces[i] != null) i++;
-        takenPieces[i] = piece;
+
+        piece.getPlayer().getPieces().remove(piece);
+        takenPieces.add(piece);
         score += piece.getPoint();
     }
-    
-    public Piece getTakenPieces(int i) {
-        
-        return takenPieces[i];
+
+    public boolean isDefeated() {
+
+        for (Piece piece: pieces) {
+
+            if (!Plate.moves(piece).isEmpty()) return false;
+        }
+        return true;
     }
     
     public int getScore() {
         
         return score;
+    }
+
+    public ArrayList<Piece> getPieces() {
+
+        return pieces;
+    }
+
+    public ArrayList<Piece> getTakenPieces() {
+
+        return takenPieces;
     }
 }

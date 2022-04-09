@@ -9,6 +9,7 @@ public class Pawn extends Piece {
         super(player, 1);
     }
     
+    @Override
     protected ArrayList<int[]> moves(int[] coords) {
 
         ArrayList<int[]> moves = new ArrayList<>();
@@ -46,5 +47,6 @@ public class Pawn extends Piece {
         if      (name.equals("Rook"))   plate[x][y] = new Rook(player);
         else if (name.equals("Knight")) plate[x][y] = new Knight(player);
         else if (name.equals("Bishop")) plate[x][y] = new Bishop(player);
+        else if (name.equals("Queen"))  plate[x][y] = new Queen(player);
     }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Player {
     
-    private String  name;
+    private final String  name;
     private int     score;
     private ArrayList<Piece> pieces      = new ArrayList<>();
     private ArrayList<Piece> takenPieces = new ArrayList<>();

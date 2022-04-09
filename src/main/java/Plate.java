@@ -1,9 +1,7 @@
-import java.util.ArrayList;
-
 public class Plate {
 
-    public static Piece	p00, p01, p02, p03, p04, p05, p06, p07, r00, r01, n00, n01, b00, b01, q00, k00;
-    public static Piece	p10, p11, p12, p13, p14, p15, p16, p17, r10, r11, n10, n11, b10, b11, q10, k10;
+    public Piece    p00, p01, p02, p03, p04, p05, p06, p07, r00, r01, n00, n01, b00, b01, q00, k00;
+    public Piece	p10, p11, p12, p13, p14, p15, p16, p17, r10, r11, n10, n11, b10, b11, q10, k10;
     public static Piece[][] plate;
 
     public Plate(Player player0, Player player1) {
@@ -73,10 +71,5 @@ public class Plate {
             System.arraycopy(plate[x], 0, plateCopy[x], 0, 8);
         }
         return plateCopy;
-    }
-    
-    public Piece[][] getPlate() {
-        
-        return plate;
     }
 }

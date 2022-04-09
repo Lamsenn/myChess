@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class Queen extends Piece {
-
+    
     public Queen(Player player) {
 
         super(player, 9);
     }
     
     @Override
-    public ArrayList<int[]> moves(int[] coords) {
+    protected ArrayList<int[]> moves(int[] coords) {
         
         ArrayList<int[]> moves = new ArrayList<>();
     

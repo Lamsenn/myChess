@@ -1,11 +1,33 @@
-public class Knight extends Piece {
+import java.util.ArrayList;
 
-    private Player  player;
-    private int		point;
+public class Knight extends Piece {
 
     public Knight(Player player) {
 
-        super(player);
-        this.point = 3;
+        super(player, 3);
+    }
+    
+    @Override
+    public ArrayList<int[]> moves(int[] coords) {
+        
+        ArrayList<int[]> moves = new ArrayList<>();
+        
+        int x;
+        int y;
+        
+        for (int i = -2; i <= 2; i++) {
+            
+            for (int j = -2; j <=2; j++) {
+    
+                x = coords[0] + i;
+                y = coords[1] + j;
+                
+                if (Math.abs(i) + Math.abs(j) == 3 && x > 0 && x < 8) {
+                    
+                    moves.add(new int[]{x, y});
+                }
+            }
+        }
+        return moves;
     }
 }

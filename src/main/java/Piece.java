@@ -1,16 +1,37 @@
 import java.util.ArrayList;
 
 public abstract class Piece {
-
-	private Player  player;
-	private int		point;
 	
-	public Piece(Player player) {
+	protected Player    player;
+	protected int       point;
+	
+	public Piece(Player player, int point) {
 		
 		this.player = player;
+		this.point = point;
 	}
 
-	public ArrayList<int[]> moves();
+	protected abstract ArrayList<int[]> moves(int[] coords);
+	
+	public ArrayList<int[]> moves() {
+		
+		return moves(getCoords());
+	}
+	
+	protected int[] getCoords() {
+		
+		for (int x = 0; x < 8; x++) {
+			
+			for (int y = 0; y < 8; y++) {
+				
+				if (Plate.plate[x][y] == this) {
+					
+					return new int[]{x, y};
+				}
+			}
+		}
+		return null;
+	}
 	
 	public Player getPlayer() {
 		
@@ -19,10 +40,6 @@ public abstract class Piece {
 	
 	public int getPoint() {
 		
-		if      (name.equals("Pawn"))   return 1;
-		else if (name.equals("Rook"))   return 5;
-        else if (name.equals("Knight")) return 3;
-        else if (name.equals("Bishop")) return 3;
-        else                            return 9;
+		return point;
 	}
 }

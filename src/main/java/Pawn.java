@@ -1,18 +1,13 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
 
-    private Player  player;
-    private int		point;
-
     public Pawn(Player player) {
 
-        super(player);
-        this.point = 1;
+        super(player, 1);
     }
 
-    public ArrayList<int[]> moves() {
+    public ArrayList<int[]> moves(int[] coords) {
 
         ArrayList<int[]> moves = new ArrayList<>();
 

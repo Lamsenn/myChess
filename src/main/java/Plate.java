@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Plate {
@@ -51,16 +50,6 @@ public class Plate {
                               {null,null,null,null,null,null,null,null},
                               { p00, p01, p02, p03, p04, p05, p06, p07},
                               { r00, n00, b00, q00, k00, b01, n01, r01}};
-    }
-    
-    public static ArrayList<int[]> moves(Piece piece) {             //to do
-    
-        ArrayList<int[]> moves = new ArrayList<>();
-        int x, y;
-        
-        
-        
-        return moves;
     }
 
     public int[] find(Piece piece) {

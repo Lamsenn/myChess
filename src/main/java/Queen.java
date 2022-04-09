@@ -1,11 +1,20 @@
-public class Queen extends Piece {
+import java.util.ArrayList;
 
-    private Player  player;
-    private int		point;
+public class Queen extends Piece {
 
     public Queen(Player player) {
 
-        super(player);
-        this.point = 9;
+        super(player, 9);
+    }
+    
+    @Override
+    public ArrayList<int[]> moves(int[] coords) {
+        
+        ArrayList<int[]> moves = new ArrayList<>();
+    
+        moves.addAll(new Rook(player).moves(coords));
+        moves.addAll(new Bishop(player).moves(coords));
+        
+        return moves;
     }
 }

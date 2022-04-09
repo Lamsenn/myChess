@@ -27,7 +27,7 @@ public class Player {
 
         for (Piece piece: pieces) {
 
-            if (!Plate.moves(piece).isEmpty()) return false;
+            if (piece.moves().isEmpty()) return false;
         }
         return true;
     }

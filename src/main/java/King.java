@@ -2,13 +2,16 @@ import java.util.ArrayList;
 
 public class King extends Piece {
 
+    protected boolean hasMoved;
+    
     public King(Player player) {
 
         super(player, 0);
+        this.hasMoved = false;
     }
     
     @Override
-    protected ArrayList<int[]> moves(int[] coords) {
+    protected ArrayList<int[]> moves(int[] coords) {    //to do: implémenter le roc
         
         ArrayList<int[]> moves = new ArrayList<>();
         int x, y;

@@ -10,7 +10,7 @@ public class Pawn extends Piece {
     }
     
     @Override
-    protected ArrayList<int[]> moves(int[] coords) {
+    protected ArrayList<int[]> moves(int[] coords) {    //to do: implémenter le En Passant
 
         ArrayList<int[]> moves = new ArrayList<>();
         int x, y, i;

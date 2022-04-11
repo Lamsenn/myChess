@@ -9,16 +9,17 @@ public abstract class Piece {
 		
 		this.player = player;
 		this.point = point;
+		player.pieces.add(this);
 	}
 
 	protected abstract ArrayList<int[]> moves(int[] coords);
 	
 	public ArrayList<int[]> moves() {
 		
-		return moves(getCoords());
+		return moves(coords());
 	}
 	
-	protected int[] getCoords() {
+	protected int[] coords() {
 		
 		for (int x = 0; x < 8; x++) {
 			

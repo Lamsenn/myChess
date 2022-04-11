@@ -6,9 +6,10 @@ public class Chess {
 				player1 = new Player("Magnus");
 		Plate plate = new Plate(player0, player1);
 		
-		while (!player0.checkmate() || !player1.checkmate()) {
+		System.out.println(Plate.plate);
+		
+		//while (!player0.isCheckmate() || !player1.isCheckmate()) {
 		
 		
-		}
 	}
 }

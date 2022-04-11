@@ -1,73 +1,70 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Player {
-    
-    private final String  name;
-    private int score;
-    private ArrayList<Piece> pieces      = new ArrayList<>();
-    private ArrayList<Piece> takenPieces = new ArrayList<>();
-    private Player opponent;
-    static Player[] players = new Player[2];
-
-    public Player(String name) {
-
-        this.name = name;
-        this.score = 0;
-        if (players[0] == null) players[0] = this;
-        else                    players[1] = this;
-    }
-    
-    public void move() {
-    
-    
-    }
-    
-    public void take(Piece piece) {
-
-        piece.getPlayer().getPieces().remove(piece);
-        takenPieces.add(piece);
-        score += piece.getPoint();
-    }
-
-    public boolean checkmate() {
-
-        for (Piece piece: pieces) {
-
-            if (piece.moves().isEmpty()) return false;
-        }
-        return true;
-    }
-    
-    public boolean check() {
-    
-        int[] kingCoords = null;
-        
-        for (Piece piece: pieces) {
-            
-            if (piece instanceof King) {
-    
-                kingCoords = piece.getCoords();
-            }
-        }
-        for (Piece piece: opponent.getPieces()) {
-            
-            if (piece.moves().contains(kingCoords)) return true;        //to do: vérifier que .contains compare correctement
-        }
-        return false;
-    }
-    
-    public int getScore() {
-        
-        return score;
-    }
-
-    public ArrayList<Piece> getPieces() {
-
-        return pieces;
-    }
-
-    public ArrayList<Piece> getTakenPieces() {
-
-        return takenPieces;
-    }
+	
+	private final String name;
+	private int score;
+	public final ArrayList<Piece> pieces      = new ArrayList<>();
+	private final ArrayList<Piece> takenPieces = new ArrayList<>();
+	private final Player opponent;
+	static Player[] players = new Player[2];
+	
+	public Player(String name) {
+		
+		this.name = name;
+		this.score = 0;
+		if (players[0] == null) {
+			
+			players[0] = this;
+			opponent = players[1];
+		}
+		else {
+			
+			players[1] = this;
+			opponent = players[0];
+		}
+	}
+	
+	public void move() {
+	
+	
+	}
+	
+	public void take(Piece piece) {
+		
+		opponent.pieces.remove(piece);
+		takenPieces.add(piece);
+		score += piece.point;
+	}
+	
+	public boolean isCheckmate() {
+		
+		for (Piece piece: pieces) {
+			
+			if (piece.moves().isEmpty()) return false;
+		}
+		return true;
+	}
+	
+	public boolean isCheck() {
+		
+		int[] kingCoords = null;
+		
+		for (Piece piece: pieces) {
+			
+			if (piece instanceof King) {
+				
+				kingCoords = piece.coords();
+			}
+		}
+		for (Piece piece: opponent.pieces) {
+			
+			for (int[] coords: piece.moves()) {
+				
+				if (Arrays.equals(coords, kingCoords)) return true;
+			}
+		}
+		return false;
+	}
 }

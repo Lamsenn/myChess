@@ -40,8 +40,8 @@ public class Pawn extends Piece {
     
     public void promotion(String name) {
         
-        int x = getCoords()[0];
-        int y = getCoords()[1];
+        int x = coords()[0];
+        int y = coords()[1];
         plate[x][y] = null;
         
         if      (name.equals("Rook"))   plate[x][y] = new Rook(player);

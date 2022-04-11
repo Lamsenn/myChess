@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Rook extends Piece {
     
     protected boolean hasMoved;
+    protected boolean castle;
     
     private final Piece[][] plate = Plate.plate;
     
@@ -31,6 +32,8 @@ public class Rook extends Piece {
                     if (plate[x][y].getPlayer() == player) break;
                     moves.add(new int[]{x, y});
                     if (plate[x][y] != null) break;
+                    
+                    
                 }
             }
         }

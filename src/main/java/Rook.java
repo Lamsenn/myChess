@@ -5,7 +5,7 @@ public class Rook extends Piece {
     protected boolean hasMoved;
     protected boolean castle;
     
-    private final Piece[][] plate = Plate.plate;
+    private final Piece[][] plate = Plate.getPlate();
     
     public Rook(Player player) {
 
@@ -16,7 +16,8 @@ public class Rook extends Piece {
     protected ArrayList<int[]> moves(int[] coords) {    //to do: implémenter le roc
     
         ArrayList<int[]> moves = new ArrayList<>();
-        int x, y;
+        int x;
+        int y;
     
         for (int i = -1; i <= 1; i++) {
         
@@ -32,8 +33,6 @@ public class Rook extends Piece {
                     if (plate[x][y].getPlayer() == player) break;
                     moves.add(new int[]{x, y});
                     if (plate[x][y] != null) break;
-                    
-                    
                 }
             }
         }

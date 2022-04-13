@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Bishop extends Piece {
     
-    private final Piece[][] plate = Plate.plate;
+    private final Piece[][] plate = Plate.getPlate();
     
     public Bishop(Player player) {
 
@@ -13,7 +13,8 @@ public class Bishop extends Piece {
     protected ArrayList<int[]> moves(int[] coords) {
     
         ArrayList<int[]> moves = new ArrayList<>();
-        int x, y;
+        int x;
+        int y;
     
         for (int i = -1; i < 2; i++) {
         
@@ -21,7 +22,7 @@ public class Bishop extends Piece {
             
                 x = coords[0];
                 y = coords[1];
-            
+                
                 while (Math.abs(i) == Math.abs(j) && i != 0 && x > 0 && x < 8 && y > 0 && y < 8) {
                 
                     if (plate[x][y].getPlayer() == player) break;

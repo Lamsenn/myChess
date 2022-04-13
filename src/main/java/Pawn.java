@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Pawn extends Piece {
     
-    private final Piece[][] plate = Plate.plate;
+    private final Piece[][] plate = Plate.getPlate();
     
     public Pawn(Player player) {
 

@@ -66,7 +66,7 @@ public class Plate {
         return plate;
     }
     
-    public static void setPlate(Piece piece, int[] from, int[] to) {
+    public static void update(Piece piece, int[] from, int[] to) {
         
         int x = from[0];
         int y = from[1];

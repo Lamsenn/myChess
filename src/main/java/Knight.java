@@ -6,8 +6,7 @@ public class Knight extends Piece {
 
         super(player, 3);
     }
-    
-    @Override
+
     protected ArrayList<int[]> moves(int[] coords) {
         
         ArrayList<int[]> moves = new ArrayList<>();

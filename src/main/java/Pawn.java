@@ -1,22 +1,24 @@
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
-    
-    private final Piece[][] plate = Plate.getPlate();
+
+    private boolean moved;
+    private final Piece[][] plate;
     
     public Pawn(Player player) {
 
         super(player, 1);
+        moved = false;
+        plate = Plate.getPlate();
     }
-    
-    @Override
+
     protected ArrayList<int[]> moves(int[] coords) {    //to do: implémenter le En Passant
 
         ArrayList<int[]> moves = new ArrayList<>();
         int x, y, i;
         
-        if (Player.players[0] == player) i = 1;
-        else                             i = -1;
+        if (Player.getPlayers()[0] == player) i =  1;
+        else                                  i = -1;
         
         for (int j = -1; j <= 1; j++) {
             

@@ -9,11 +9,11 @@ public abstract class Piece {
 		
 		this.player = player;
 		this.point = point;
-		player.pieces.add(this);
+		player.getPieces().add(this);
 	}
 
 	protected abstract ArrayList<int[]> moves(int[] coords);
-	
+
 	public ArrayList<int[]> moves() {
 		
 		return moves(coords());
